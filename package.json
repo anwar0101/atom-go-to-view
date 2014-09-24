@@ -1,0 +1,14 @@
+{
+  "name": "goto-view",
+  "main": "./lib/goto-view",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationEvents": ["goto-view:toggle"],
+  "repository": "https://github.com/atom/goto-view",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
