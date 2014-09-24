@@ -1,12 +1,9 @@
 {
-  "name": "goto-view",
-  "main": "./lib/goto-view",
-  "version": "0.0.1",
-  "description": "A short description of your package",
-  "activationEvents": [
-    "goto-view:toggle"
-  ],
-  "repository": "https://github.com/mgbatchelor/goto-view",
+  "name": "go-to-view",
+  "main": "./lib/go-to-view",
+  "version": "0.0.0",
+  "description": "Jump to the view for the current rails controller action",
+  "repository": "https://github.com/mgbatchelor/atom-go-to-view",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"

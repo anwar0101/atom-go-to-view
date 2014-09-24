@@ -1,15 +1,11 @@
 # See https://atom.io/docs/latest/creating-a-package#menus for more details
-'context-menu':
-  '.overlayer':
-      'Enable goto-view': 'goto-view:toggle'
-
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'goto-view'
+      'label': 'go-to-view'
       'submenu': [
-        { 'label': 'Toggle', 'command': 'goto-view:toggle' }
+        { 'label': 'Jump', 'command': 'go-to-view:jump' }
       ]
     ]
   }
