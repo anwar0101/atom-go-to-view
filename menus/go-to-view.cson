@@ -6,6 +6,7 @@
       'label': 'go-to-view'
       'submenu': [
         { 'label': 'Jump', 'command': 'go-to-view:jump' }
+        { 'label': 'Spec', 'command': 'go-to-view:spec' }
       ]
     ]
   }

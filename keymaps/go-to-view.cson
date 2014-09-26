@@ -9,3 +9,4 @@
 # https://atom.io/docs/latest/advanced/keymaps
 '.workspace':
   'ctrl-cmd-v': 'go-to-view:jump'
+  'ctrl-cmd-s': 'go-to-view:spec'
