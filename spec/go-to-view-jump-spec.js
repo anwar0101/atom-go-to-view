@@ -4,6 +4,20 @@ describe('Go To View Jump', function() {
 
   describe("run", function() {
 
+    it("wont open any file if not a valid file", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/utils/helper.rb";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return "   def hello_world(var1)";
+        }
+      };
+    });
+
     it("opens the view", function() {
       editor = {
         getPath: function(){
@@ -20,6 +34,42 @@ describe('Go To View Jump', function() {
       spyOn(atom.workspace, 'open')
       new GoToViewJump().run(editor);
       expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/hello_world.html.erb")
+    });
+
+    it("opens a partial", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/views/hello/hello.html.erb";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return '<%= render "nav" %>';
+        }
+      };
+
+      spyOn(atom.workspace, 'open')
+      new GoToViewJump().run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.erb")
+    });
+
+    it("opens a partial in a different folder", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/views/hello/hello.html.erb";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return '<%= render "../common/header" %>';
+        }
+      };
+
+      spyOn(atom.workspace, 'open')
+      new GoToViewJump().run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb")
     });
 
   });
