@@ -1,5 +1,6 @@
+## 0.2.2 Fixing opening of files
+
 ## 0.2.1 - Register commands correctly
-* Fixing opening of files
 
 ## 0.2.0 - Fixing deprecation warning
 * Changed keymaps to use 'atom-workspace' selector
