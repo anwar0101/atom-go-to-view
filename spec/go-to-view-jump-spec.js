@@ -17,9 +17,9 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.project, 'open')
+      spyOn(atom.workspace, 'open')
       new GoToViewJump().run(editor);
-      expect(atom.project.open).not.toHaveBeenCalled()
+      expect(atom.workspace.open).not.toHaveBeenCalled()
     });
 
     it("opens the view", function() {
@@ -35,9 +35,9 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.project, 'open')
+      spyOn(atom.workspace, 'open')
       new GoToViewJump().run(editor);
-      expect(atom.project.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/hello_world.html.erb")
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/hello_world.html.erb")
     });
 
     it("opens a partial", function() {
@@ -53,9 +53,9 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.project, 'open')
+      spyOn(atom.workspace, 'open')
       new GoToViewJump().run(editor);
-      expect(atom.project.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.erb")
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.erb")
     });
 
     it("opens a partial in a different folder", function() {
@@ -71,9 +71,9 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.project, 'open')
+      spyOn(atom.workspace, 'open')
       new GoToViewJump().run(editor);
-      expect(atom.project.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb")
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb")
     });
 
   });

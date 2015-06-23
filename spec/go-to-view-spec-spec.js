@@ -11,9 +11,9 @@ describe('Go To View Spec', function() {
         }
       };
 
-      spyOn(atom.project, 'open')
+      spyOn(atom.workspace, 'open')
       new GoToViewSpec().run(editor);
-      expect(atom.project.open).toHaveBeenCalledWith("/home/workspace/project/spec/controllers/hello_controller_spec.rb")
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/spec/controllers/hello_controller_spec.rb")
     });
 
   });
