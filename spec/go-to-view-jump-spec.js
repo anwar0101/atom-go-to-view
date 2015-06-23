@@ -17,9 +17,9 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.workspace, 'open')
-      new GoToViewJump().run(editor);
-      expect(atom.workspace.open).not.toHaveBeenCalled()
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.erb").run(editor);
+      expect(atom.workspace.open).not.toHaveBeenCalled();
     });
 
     it("opens the view", function() {
@@ -36,7 +36,7 @@ describe('Go To View Jump', function() {
       };
 
       spyOn(atom.workspace, 'open')
-      new GoToViewJump().run(editor);
+      new GoToViewJump(".html.erb").run(editor);
       expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/hello_world.html.erb")
     });
 
@@ -53,9 +53,27 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.workspace, 'open')
-      new GoToViewJump().run(editor);
-      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.erb")
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.erb").run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.erb");
+    });
+
+    it("jump to view supports slim", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/views/hello/hello.html.slim";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return '= render "nav"';
+        }
+      };
+
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.slim").run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/hello/_nav.html.slim");
     });
 
     it("opens a partial in a different folder", function() {
@@ -71,9 +89,45 @@ describe('Go To View Jump', function() {
         }
       };
 
-      spyOn(atom.workspace, 'open')
-      new GoToViewJump().run(editor);
-      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb")
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.erb").run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb");
+    });
+
+    xit("opens a partial with symbol syntax", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/views/hello/hello.html.erb";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return '<%= render partial: "../common/header" %>';
+        }
+      }
+
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.erb").run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb");
+    });
+
+    xit("opens a partial with hash rocket syntax", function() {
+      editor = {
+        getPath: function(){
+          return "/home/workspace/project/app/views/hello/hello.html.erb";
+        },
+        getCursorScreenPosition: function(){
+          return { row: 1 };
+        },
+        lineTextForScreenRow: function(row) {
+          return '<%= render :partial => "../common/header" %>';
+        }
+      }
+
+      spyOn(atom.workspace, 'open');
+      new GoToViewJump(".html.erb").run(editor);
+      expect(atom.workspace.open).toHaveBeenCalledWith("/home/workspace/project/app/views/common/_header.html.erb");
     });
 
   });
