@@ -1,3 +1,7 @@
+## 0.2.0 - Fixing deprecation warning
+* Changed keymaps to use 'atom-workspace' selector
+* Change atom.workspace.open to use atom.project.open
+
 ## 0.1.2 - Adding open partial support
 * Allow opening partials from within another view
  * Support partials references `<%= render "partial_name" %>`
