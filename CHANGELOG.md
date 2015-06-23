@@ -1,4 +1,6 @@
-## 0.2.2 Fixing opening of files
+## 0.3.0 - Support for any view file ending (slim, haml, etc.)
+
+## 0.2.2 - Fixing opening of files
 
 ## 0.2.1 - Register commands correctly
 
